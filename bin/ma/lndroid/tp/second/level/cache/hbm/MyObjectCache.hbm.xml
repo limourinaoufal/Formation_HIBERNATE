@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">
+
+<hibernate-mapping>
+	<class name="ma.lndroid.tp.second.level.cache.dto.MyObjectCache" table="MY_OBJECT"
+		discriminator-value="EMP">
+
+		 <cache usage="read-only"/>
+		 <!-- 		 usage="transactional|read-write|nonstrict-read-write|read-only" -->
+		 
+		<id name="id" column="id">
+			<generator class="increment"></generator>
+		</id>
+
+		<property name="name" column="NAME"></property>
+
+	</class>
+	
+	<query name="hbmQueryGetById">
+			<![CDATA[from MyObjectCache m where m.id= :myId]]>  
+	</query>
+
+</hibernate-mapping>  

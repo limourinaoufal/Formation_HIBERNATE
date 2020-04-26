@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">
+
+<hibernate-mapping>
+
+	<class name="ma.lndroid.tp.draft.abs.mapping.dto.Vehicule"	table="VEHICULE" >
+		
+		<id name="id" column="PK_SEQ">
+			<generator class="identity"></generator>
+		</id>
+		
+		<discriminator column="type" type="string"></discriminator>
+		
+		<property name="name" column="NAME"></property>
+			
+		<subclass name="ma.lndroid.tp.draft.abs.mapping.dto.Bike"
+			discriminator-value="BIKE">
+			<property name="typeAir" column="TYPE_AIR"></property>
+		</subclass>
+		
+		<subclass name="ma.lndroid.tp.draft.abs.mapping.dto.Car"
+			discriminator-value="CAR">
+			<property name="typeCraburant" column="TYPE_CRABURANT"></property>
+		</subclass>
+		
+	</class>
+
+</hibernate-mapping>  

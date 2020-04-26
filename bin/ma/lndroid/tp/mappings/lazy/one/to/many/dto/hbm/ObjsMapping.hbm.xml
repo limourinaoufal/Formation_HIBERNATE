@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">
+
+<hibernate-mapping>
+
+	<class name="ma.lndroid.tp.mappings.lazy.one.to.many.dto.Question"
+		table="QUESTIONS">
+		<id name="id" column="PK_SEQ">
+			<generator class="identity"></generator>
+		</id>
+		<property name="qname" column="Q_NAME"></property>
+
+		<list name="answers" lazy="true" cascade="all" >
+			<key column="FK_Q"></key>
+			<index column="LIST_INDICE"></index>
+			<one-to-many class="ma.lndroid.tp.mappings.lazy.one.to.many.dto.Answer"  ></one-to-many>
+		</list>
+
+	</class>
+
+	<class name="ma.lndroid.tp.mappings.lazy.one.to.many.dto.Answer"
+		table="ANSWERS">
+		<id name="id" column="PK_SEQ">
+			<generator class="identity"></generator>
+		</id>
+		<property name="answerName" column="ANSWER_NAME"></property>
+		<property name="postedBy" column="POSTED_BY"></property>
+	</class>
+
+</hibernate-mapping>  

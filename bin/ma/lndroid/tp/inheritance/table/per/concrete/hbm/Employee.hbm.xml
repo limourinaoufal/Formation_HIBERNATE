@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">
+
+<hibernate-mapping>
+	<class name="ma.lndroid.tp.inheritance.table.per.concrete.dto.Employee" table="EMPLOYEE"
+		discriminator-value="EMP">
+		<id name="id" column="PK_SEQ">
+			<generator class="increment"></generator>
+		</id>
+
+		<property name="name" column="NAME"></property>
+
+		<union-subclass name="ma.lndroid.tp.inheritance.table.per.concrete.dto.Regular_Employee"
+			table="REG_EMP">
+			<property name="salary" column="SALARY"></property>
+			<property name="bonus" column="BONUS"></property>
+		</union-subclass>
+
+		<union-subclass  name="ma.lndroid.tp.inheritance.table.per.concrete.dto.Contract_Employee"
+			table="CON_EMP">
+			<property name="payPerHour" column="PAY_PER_HOUR" ></property>
+			<property name="contractPeriod" column="CONTRACT_DURATION"></property>
+		</union-subclass>
+
+	</class>
+
+</hibernate-mapping>  

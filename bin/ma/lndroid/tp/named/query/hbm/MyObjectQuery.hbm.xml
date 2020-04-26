@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+          "-//Hibernate/Hibernate Mapping DTD 5.3//EN"  
+          "http://hibernate.sourceforge.net/hibernate-mapping-5.3.dtd">
+
+<hibernate-mapping>
+	<class name="ma.lndroid.tp.named.query.dto.MyObjectQuery" table="MY_OBJECT"
+		discriminator-value="EMP">
+		<id name="id" column="id">
+			<generator class="increment"></generator>
+		</id>
+
+		<property name="name" column="NAME"></property>
+
+	</class>
+	
+	<query name="hbmQueryGetById">
+			<![CDATA[from MyObjectQuery m where m.id= :myId]]>  
+	</query>
+
+</hibernate-mapping>  
